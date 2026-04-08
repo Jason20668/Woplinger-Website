@@ -1,158 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Stats - Marlboro HS Boys Lacrosse</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <script defer src="script3.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MHS Boys Lacrosse</title>
+  <link rel="icon" href="imgs/Logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="main.js"></script>
 </head>
-
 <body>
-    <header>
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
 
-        <div class="desktop-nav">
-            <!-- Main navigation -->
-            <nav class="main-nav">
-                <ul>
-                    <div class="left-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="Stats.html">Stats</a></li>
-                        <li><a href="Parents.html">Parents Club</a></li>
-                    </div>
+<div class="site">
 
-                    <div class="logo-container">
-                        <img src="imgs/Logo.png" alt="Logo" width="70" height="70">
-                    </div>
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="imgs/Logo.png" class="logo">
+      <a href="#">Home</a>
+      <a href="#" id="nav-team" class="active-nav" onclick="showRosterPage(); return false;">Team</a>
+      <a href="#">Information</a>
+    </div>
+    <div class="nav-right">
+      <a href="#">Schedule</a>
+      <a href="#">Gallery</a>
+      <a href="#">Instagram</a>
+      <a href="#">Admin</a>
+    </div>
+  </header>
 
-                    <div class="right-menu">
-                        <li><a href="Schedule.html">Schedule</a></li>
-                        <li><a href="Gallery.html">Gallery</a></li>
-                        <li><a href="Instagram.html">Follow our IG!</a></li>
-                    </div>
-                </ul>
-            </nav>
+  <h1 class="page-title">Team Roster</h1>
 
-            <!-- Secondary navigation -->
-            <nav class="secondary-nav">
-                <ul>
-                    <li class="left-item"><a href="index.html">Boys Lacrosse</a></li>
-                    <div class="right-items">
-                        <li><a href="index.html">Coaches</a></li>
-                        <li><a href="Varsity.html">Varsity</a></li>
-                        <li><a href="Tryouts.html">JV / Freshman / Tryouts</a></li>
-                    </div>
-                </ul>
-            </nav>
-        </div>
+  <div class="tab-row">
+    <button class="tab-btn active" id="btn-team-stats" onclick="showTab('team-stats')">Team Stats</button>
+    <button class="tab-btn"        id="btn-player-stats" onclick="showTab('player-stats')">Player Stats</button>
+  </div>
 
-        <!-- Single mobile menu container -->
-        <div class="mobile-menu-container">
-            <nav class="mobile-nav">
-                <ul>
-                    <!-- Primary nav items -->
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Stats.html">Stats</a></li>
-                    <li><a href="Parents.html">Parents Club</a></li>
-                    <li><a href="Schedule.html">Schedule</a></li>
-                    <li><a href="Gallery.html">Gallery</a></li>
-                    <li><a href="Instagram.html">Follow our IG!</a></li>
+  <!-- Team Stats Section -->
+  <div id="section-team-stats" class="section visible">
+    <div class="stats-box">
+      <div class="stats-title">Team Stats</div>
+      <div class="stats-grid">
+        <div>Wins: 0</div>
+        <div>Losses: 0</div>
+        <div>Team Goals: 0</div>
+        <div>Team Assists: 0</div>
+        <div>Team Points: 0</div>
+        <div>Team GBs: 0</div>
+        <div class="full">FOS Win Percent: 100%</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="ig-icon">&#9679;</span>
+      <span>woplinger@frhsd.com</span>
+    </div>
+  </div>
 
-                    <!-- Divider -->
-                    <li class="divider"></li>
+  <!-- Player Stats Section -->
+  <div id="section-player-stats" class="section">
 
-                    <!-- Secondary nav items -->
-                    <li><a href="index.html#coaches">Coaches</a></li>
-                    <li><a href="Varsity.html">Varsity</a></li>
-                    <li><a href="Tryouts.html">JV / Freshman / Tryouts</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <h2 class="player-stats-title" id="player-section-title">Player Stats</h2>
 
-    <br>
+    <div class="archive-toggle-row">
+      <button class="archive-btn archived-btn" id="archive-toggle-btn" onclick="toggleArchive()">Archived</button>
+    </div>
 
-    <section class="section2" id="section2">
-        <div class="container2">
-            <div class="row pt-5 justify-content-center">
-                <h1 class="font-main text-center">Team Stats</h1>
-                <div class="col-8">
-                    <div id="stats-container" class="stats-box"></div>
-                    <script id="stats-data" type="application/json">
-{
-  "record": "10-8",
-  "teamGoals": 211,
-  "teamAssists": 159,
-  "teamPoints": 370,
-  "teamGB": 658,
-  "teamFOSWinPercent": "0.61",
-  "leadingScorers": [
-    { "name": "Tyler Gellis", "goals": 44 },
-    { "name": "Andrew Silvia", "goals": 33 }
-  ],
-  "players": [
-    { "name": "Jennaro Percodani", "position": "D, LSM", "class": "Senior" },
-    { "name": "Jake Sondak", "position": "A", "class": "Junior" },
-    { "name": "Matthew Chuk", "position": "M", "class": "Senior" },
-    { "name": "Brandon Kaiserman", "position": "M", "class": "Senior" },
-    { "name": "Miles Komito", "position": "A, M", "class": "Senior" },
-    { "name": "Alec Roberman", "position": "FOGO", "class": "Junior" },
-    { "name": "Mason Trombetta", "position": "M", "class": "Senior" },
-    { "name": "Grant Yearling", "position": "", "class": "Sophomore" },
-    { "name": "Alexander Kurushi", "position": "", "class": "Senior" },
-    { "name": "Danella Mezheritsky", "position": "", "class": "Junior" },
-    { "name": "Drew Lichtenthal", "position": "FOGO", "class": "Senior" },
-    { "name": "Joshua Levitis", "position": "", "class": "Junior" },
-    { "name": "Hudson Muhlbach", "position": "", "class": "Junior" },
-    { "name": "Jacob Bazerman", "position": "", "class": "Junior" },
-    { "name": "Brayden Gallo", "position": "", "class": "Junior" },
-    { "name": "Dane Mezheritsky", "position": "", "class": "Junior" },
-    { "name": "Justin Saenz", "position": "", "class": "" }
-  ],
-  "goalies": [
-    { "name": "Brayden Gallo", "Saves": 169, "GA": 122, "GP": 16 },
-    { "name": "Joshua Levitis", "Saves": 0, "GA": 0, "GP": 1 },
-    { "name": "Jack Lichtenthal", "Saves": 12, "GA": 9, "GP": 5 },
-    { "name": "Dane Mezheritsky", "Saves": 10, "GA": 9, "GP": 5 },
-    { "name": "Hudson Muhlbach", "Saves": 0, "GA": 0, "GP": 1 }
-  ],
-  "nextGame": "Till next season!",
-  "lastUpdated": "2026-02-23T00:00:00Z"
-}
-                    </script>
-                </div>
+    <!-- Active Players -->
+    <div id="active-players-view">
+      <div class="cards-section">
+
+        <!-- Coaches row -->
+        <div class="cards-row" style="justify-content:center; gap:16px; margin-bottom:14px;">
+          <div class="player-card coach">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/coach1/120/120" alt="Bill Oplinger" />
             </div>
-        </div>
-    </section>
-
-    <br>
-    <br>
-
-    <footer>
-        <div class="footerContainer">
-            <div class="socialIcons">
-                <a onclick="window.open('https://www.instagram.com/marlboroboyslax?igsh=YjMzYXJhYWs5em0w')"><i
-                        class="fa-brands fa-instagram"></i></a>
+            <div class="card-name">Bill Oplinger</div>
+            <div class="card-sub">Head Coach</div>
+          </div>
+          <div class="player-card coach">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/coach2/120/120" alt="Christopher Ploe" />
             </div>
-            <div class="footerNav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Parents.html">Parents Club</a></li>
-                    <li><a href="Schedule.html">Schedule</a></li>
-                    <li><a href="Gallery.html">Gallery</a></li>
-                    <li><a href="Stats.html">Stats</a></li>
-                </ul>
-            </div>
+            <div class="card-name">Christopher Ploe</div>
+            <div class="card-sub">Assistant Coach</div>
+          </div>
         </div>
-    </footer>
+
+        <!-- Players row -->
+        <div class="cards-row">
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/p1/120/120" alt="Player 1" /></div>
+            <div class="card-name">Player 1</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/p2/120/120" alt="Player 2" /></div>
+            <div class="card-name">Player 2</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/p3/120/120" alt="Player 3" /></div>
+            <div class="card-name">Player 3</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/p4/120/120" alt="Player 4" /></div>
+            <div class="card-name">Player 4</div><div class="card-sub">Senior</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Archived Players -->
+    <div id="archived-players-view" style="display:none;">
+      <div class="cards-section">
+        <div class="cards-row">
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a1/120/120" alt="Player 1" /></div>
+            <div class="card-name">Player 1</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a2/120/120" alt="Player 2" /></div>
+            <div class="card-name">Player 2</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a3/120/120" alt="Player 3" /></div>
+            <div class="card-name">Player 3</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a4/120/120" alt="Player 4" /></div>
+            <div class="card-name">Player 4</div><div class="card-sub">Senior</div>
+          </div>
+        </div>
+        <div class="cards-row">
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a5/120/120" alt="Player 1" /></div>
+            <div class="card-name">Player 1</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a6/120/120" alt="Player 2" /></div>
+            <div class="card-name">Player 2</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a7/120/120" alt="Player 3" /></div>
+            <div class="card-name">Player 3</div><div class="card-sub">Senior</div>
+          </div>
+          <div class="player-card">
+            <div class="card-img"><img src="https://picsum.photos/seed/a8/120/120" alt="Player 4" /></div>
+            <div class="card-name">Player 4</div><div class="card-sub">Senior</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="ig-icon">&#9679;</span>
+      <span>woplinger@frhsd.com</span>
+    </div>
+
+  </div><!-- end #section-player-stats -->
+
+</div><!-- end .site -->
+
+<script src="main.js"></script>
 </body>
-
 </html>

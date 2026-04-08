@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MHS Boys Lacrosse</title>
+<link rel="icon" href="imgs/Logo.png">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
@@ -11,55 +12,57 @@
 <body>
 
 <header class="navbar">
-    <div class="nav-left">
-        <img src="imgs/Logo.png" class="logo">
-        <a href="#">Home</a>
-        <a href="#">Team</a>
-        <a href="#">Information</a>
-    </div>
-
-    <div class="nav-right">
-        <a href="#">Schedule</a>
-        <a href="#">Gallery</a>
-        <a href="#">Instagram</a>
-        <a href="#">Admin</a>
-    </div>
+  <div class="nav-left">
+    <img src="imgs/Logo.png" class="logo">
+    <a href="index.html">Home</a>
+    <a href="Stats.html">Team</a>
+    <a href="#">Information</a>
+  </div>
+  <div class="nav-right">
+    <a href="#">Schedule</a>
+    <a href="#">Gallery</a>
+    <a href="#">Instagram</a>
+    <a href="#">Admin</a>
+  </div>
 </header>
 
 <section class="hero">
-    <div class="hero-overlay">
-        <h1>MHS Boys Lacrosse Team</h1>
-        <div class="hero-buttons">
-            <button id="emailBtn" class="hero-btn">Email</button>
-            <a href="#" class="hero-btn">Schedule</a>
-            <a href="#" class="hero-btn">Stats</a>
-        </div>
+  <img src="imgs/Helmets.jpg" alt="Hero background" class="hero-img">
+  <div class="hero-overlay">
+    <h1>MHS Boys Lacrosse Team</h1>
+    <div class="hero-buttons">
+      <button id="emailBtn" class="hero-btn">Email</button>
+      <a href="#" class="hero-btn">Schedule</a>
+      <a href="#" class="hero-btn">Stats</a>
     </div>
+  </div>
 </section>
 
 <section class="announcements-section">
-    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-    <div class="announcements-box">
-        <h2>Announcements</h2>
-    </div>
+  <p class="intro-text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+  <div class="announcements-box">
+    <h2>Announcements</h2>
+  </div>
 </section>
 
 <footer class="footer">
-    <div class="instagram">📸</div>
-    <p>woplinger@frhsd.com</p>
+  <div class="instagram-icon">
+    <img src="imgs/Instagram_Logo.jpg" alt="Instagram">
+  </div>
+  <p>woplinger@frhsd.com</p>
 </footer>
 
 <div id="emailModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div class="form-row">
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Subject">
-            <input type="email" placeholder="Email">
-        </div>
-        <textarea placeholder="Email Body"></textarea>
-        <button class="send-btn">Send</button>
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="form-row">
+      <input type="text" placeholder="Name">
+      <input type="text" placeholder="Subject">
+      <input type="email" placeholder="Email">
     </div>
+    <textarea placeholder="Email Body"></textarea>
+    <button class="send-btn">Send</button>
+  </div>
 </div>
 
 </body>

@@ -10,6 +10,10 @@
     font-family: Arial, sans-serif;
 }
 
+body {
+    padding-bottom: 70px;
+}
+
 .navbar {
     background: var(--blue);
     color: white;
@@ -37,52 +41,85 @@
 }
 
 .hero {
-    height: 300px;
-    background: url('https://picsum.photos/1600/600') center/cover no-repeat;
     position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(150,150,150,0.7);
+    background: rgba(150, 150, 150, 0.7);
+    z-index: 1;
 }
 
 .hero-overlay {
     position: relative;
+    z-index: 2;
     text-align: center;
     color: white;
 }
 
-.hero h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
+.hero-overlay h1 {
+    font-size: 58px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
 
 .hero-btn {
     background: var(--blue);
     color: white;
     border: 3px solid var(--yellow);
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 18px;
+    padding: 16px 44px;
+    font-size: 24px;
+    font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+}
+
+.hero-btn:hover {
+    background: #2200cc;
 }
 
 .announcements-section {
-    text-align: center;
-    padding: 30px;
+    padding: 40px 20px;
+    text-align: left;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    margin-bottom: 15px;
+    font-size: 16px;
 }
 
 .announcements-box {
     border: 4px solid var(--blue);
-    max-width: 600px;
-    height: 200px;
-    margin: 20px auto;
+    width: 100%;
+    height: 280px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -92,6 +129,7 @@
 .announcements-box h2 {
     border-bottom: 4px solid var(--yellow);
     padding-bottom: 5px;
+    font-size: 22px;
 }
 
 .footer {
@@ -99,57 +137,106 @@
     text-align: center;
     padding: 15px;
     font-weight: bold;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.instagram-icon {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.instagram-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
+    z-index: 100;
 }
 
 .modal-content {
     background: #d3d3d3;
     border: 4px solid var(--blue);
-    padding: 20px;
-    width: 350px;
+    padding: 30px 30px 25px;
+    width: 560px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .close-btn {
     position: absolute;
-    top: 5px;
-    left: 10px;
-    font-size: 20px;
+    top: 8px;
+    left: 12px;
+    font-size: 24px;
     cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--blue);
+}
+
+.close-btn:hover {
+    opacity: 0.7;
 }
 
 .form-row {
     display: flex;
     gap: 10px;
-    margin: 20px 0;
+    margin: 30px 0 12px;
 }
 
 .form-row input {
     flex: 1;
     border: 2px solid var(--yellow);
-    padding: 8px;
+    padding: 10px 8px;
+    font-size: 15px;
+    background: white;
+    min-width: 0;
 }
 
 textarea {
     width: 100%;
-    height: 120px;
+    height: 160px;
     border: 2px solid var(--yellow);
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 14px;
+    padding: 12px;
+    font-size: 15px;
+    resize: none;
+    background: white;
+    display: block;
 }
 
 .send-btn {
-    float: right;
+    align-self: flex-end;
     border: 2px solid green;
-    padding: 8px 20px;
+    padding: 10px 30px;
     background: white;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: #e8ffe8;
+}
+
+.navbar a {
+  font-size: 1.1rem;
+}
+
+.navbar a:hover {
+  color: #FFE100;
 }
