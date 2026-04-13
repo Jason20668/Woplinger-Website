@@ -1,45 +1,73 @@
-var isArchived = false;
+const { createApp, ref, computed, onMounted } = Vue;
 
-function showTab(tab) {
-  document.getElementById('section-team-stats').classList.remove('visible');
-  document.getElementById('section-player-stats').classList.remove('visible');
-  document.getElementById('btn-team-stats').classList.remove('active');
-  document.getElementById('btn-player-stats').classList.remove('active');
+createApp({
+  setup() {
+    const activeTab      = ref('team-stats');
+    const isArchived     = ref(false);
+    const teamStats      = ref({});
+    const players        = ref([]);
+    const coaches        = ref([]);
+    const modalOpen      = ref(false);
+    const selectedPlayer = ref(null);
 
-  if (tab === 'team-stats') {
-    document.getElementById('section-team-stats').classList.add('visible');
-    document.getElementById('btn-team-stats').classList.add('active');
-    isArchived = false;
-  } else {
-    document.getElementById('section-player-stats').classList.add('visible');
-    document.getElementById('btn-player-stats').classList.add('active');
-  }
-}
+    onMounted(async () => {
+      try {
+        const res  = await fetch('Stats.json');
+        const data = await res.json();
+        teamStats.value = data.teamStats;
+        players.value   = data.players;
+        coaches.value   = data.coaches;
+      } catch (e) {
+        console.error('Failed to load Stats.json:', e);
+      }
+    });
 
-function toggleArchive() {
-  isArchived = !isArchived;
+    const activePlayers    = computed(() => players.value.filter(p => !p.archived));
+    const archivedPlayers  = computed(() => players.value.filter(p =>  p.archived));
+    const displayedPlayers = computed(() =>
+      isArchived.value ? archivedPlayers.value : activePlayers.value
+    );
 
-  var btn      = document.getElementById('archive-toggle-btn');
-  var title    = document.getElementById('player-section-title');
-  var active   = document.getElementById('active-players-view');
-  var archived = document.getElementById('archived-players-view');
+    function showTab(tab) {
+      activeTab.value = tab;
+      if (tab === 'team-stats') isArchived.value = false;
+    }
 
-  if (isArchived) {
-    btn.textContent  = 'Active';
-    btn.className    = 'archive-btn active-btn';
-    title.textContent = 'Archived Players';
-    active.style.display   = 'none';
-    archived.style.display = 'block';
-  } else {
-    btn.textContent  = 'Archived';
-    btn.className    = 'archive-btn archived-btn';
-    title.textContent = 'Player Stats';
-    active.style.display   = 'block';
-    archived.style.display = 'none';
-  }
-}
+    function toggleArchive() {
+      isArchived.value = !isArchived.value;
+    }
 
-function showRosterPage() {
-  document.getElementById('nav-team').classList.add('active-nav');
-  showTab('team-stats');
-}
+    function openModal(player) {
+      selectedPlayer.value = player;
+      modalOpen.value = true;
+    }
+
+    function closeModal() {
+      modalOpen.value = false;
+      selectedPlayer.value = null;
+    }
+
+    function toggleAccordion(season) {
+      season._open = !season._open;
+      players.value = [...players.value];
+    }
+
+    return {
+      activeTab,
+      isArchived,
+      teamStats,
+      players,
+      coaches,
+      modalOpen,
+      selectedPlayer,
+      activePlayers,
+      archivedPlayers,
+      displayedPlayers,
+      showTab,
+      toggleArchive,
+      openModal,
+      closeModal,
+      toggleAccordion,
+    };
+  },
+}).mount('#app');

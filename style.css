@@ -114,6 +114,7 @@ body {
 .intro-text {
     margin-bottom: 15px;
     font-size: 16px;
+    text-align: center;
 }
 
 .announcements-box {

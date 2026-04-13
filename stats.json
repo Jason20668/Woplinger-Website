@@ -1,32 +1,316 @@
 {
-  "record": "0-0",
-  "teamGoals": 0,
-  "teamAssists": 0,
-  "teamPoints": 0,
-  "teamGB": 0,
-  "teamFOSWinPercent": "0.0%",
-  "leadingScorer": [
-    
+  "coaches": [
+    {
+      "id": "coach1",
+      "name": "Bill Oplinger",
+      "role": "Head Coach",
+      "image": "https://picsum.photos/seed/coach1/300/300"
+    },
+    {
+      "id": "coach2",
+      "name": "Christopher Ploe",
+      "role": "Assistant Coach",
+      "image": "https://picsum.photos/seed/coach2/300/300"
+    }
   ],
+  "teamStats": {
+    "wins": 0,
+    "losses": 0,
+    "teamGoals": 0,
+    "teamAssists": 0,
+    "teamPoints": 0,
+    "teamGBs": 0,
+    "fosWinPercent": "100%"
+  },
   "players": [
-    { "name": "Jennaro Percodani", "position": "D, LSM", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Jake Sondak", "position": "A", "class": "Junior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-        { "name": "Salvatore Montecalvo", "position": "DM", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Matthew Chuk", "position": "M", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Brandon Kaiserman", "position": "M", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Miles Komito", "position": "A, M", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Alec Roberman", "position": "FOGO, M", "class": "Junior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Mason Trombetta", "position": "M", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Grant Yearling", "position": "M", "class": "Sophomore", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Alexander Kurushi", "position": "M", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Drew Lichtenthal", "position": "FOGO, M , A", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Joshua Levitis", "position": "FOGO, M", "class": "Junior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Hudson Muhlbach", "position": "D, LSM", "class": "Junior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Jacob Bazerman", "position": "D", "class": "Junior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" },
-    { "name": "Justin Saenz", "position": "D", "class": "Senior", "G":"", "A":"", "P":"", "GB":"", "FOS-Taken":"", "FOS-Won":"", "FOS-Win%":"" }
-  ],
-  "goalies": [
-    { "name": "Brayden Gallo", "Saves": 0, "GA": 0, "GP": 0 },
-    { "name": "Dane Mezheritsky", "Saves": 0, "GA": 0, "GP": 0 }
+    {
+      "id": "p1",
+      "name": "Player 1",
+      "grade": "Senior",
+      "position": "Attacker",
+      "image": "https://picsum.photos/seed/p1/300/300",
+      "archived": false,
+      "seasons": [
+        {
+          "year": "2025",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        },
+        {
+          "year": "2024",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "name": "Player 2",
+      "grade": "Senior",
+      "position": "Midfielder",
+      "image": "https://picsum.photos/seed/p2/300/300",
+      "archived": false,
+      "seasons": [
+        {
+          "year": "2025",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "name": "Player 3",
+      "grade": "Junior",
+      "position": "Defender",
+      "image": "https://picsum.photos/seed/p3/300/300",
+      "archived": false,
+      "seasons": [
+        {
+          "year": "2025",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "name": "Player 4",
+      "grade": "Senior",
+      "position": "Goalie",
+      "image": "https://picsum.photos/seed/p4/300/300",
+      "archived": false,
+      "seasons": [
+        {
+          "year": "2025",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a1",
+      "name": "Archived Player 1",
+      "grade": "Alumni",
+      "position": "Attacker",
+      "image": "https://picsum.photos/seed/a1/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2024",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a2",
+      "name": "Archived Player 2",
+      "grade": "Alumni",
+      "position": "Midfielder",
+      "image": "https://picsum.photos/seed/a2/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2024",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a3",
+      "name": "Archived Player 3",
+      "grade": "Alumni",
+      "position": "Defender",
+      "image": "https://picsum.photos/seed/a3/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2024",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a4",
+      "name": "Archived Player 4",
+      "grade": "Alumni",
+      "position": "Goalie",
+      "image": "https://picsum.photos/seed/a4/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2024",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a5",
+      "name": "Archived Player 5",
+      "grade": "Alumni",
+      "position": "Attacker",
+      "image": "https://picsum.photos/seed/a5/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2023",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a6",
+      "name": "Archived Player 6",
+      "grade": "Alumni",
+      "position": "Midfielder",
+      "image": "https://picsum.photos/seed/a6/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2023",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a7",
+      "name": "Archived Player 7",
+      "grade": "Alumni",
+      "position": "Defender",
+      "image": "https://picsum.photos/seed/a7/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2023",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    },
+    {
+      "id": "a8",
+      "name": "Archived Player 8",
+      "grade": "Alumni",
+      "position": "Goalie",
+      "image": "https://picsum.photos/seed/a8/300/300",
+      "archived": true,
+      "seasons": [
+        {
+          "year": "2023",
+          "goals": 0,
+          "assists": 0,
+          "points": 0,
+          "gbs": 0,
+          "fosWinPercent": "N/A",
+          "gamesPlayed": 0,
+          "shots": 0,
+          "shotPct": "N/A",
+          "turnovers": 0,
+          "causedTurnovers": 0
+        }
+      ]
+    }
   ]
 }

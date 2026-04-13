@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MHS Boys Lacrosse</title>
-  <link rel="icon" href="imgs/Logo.png">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="main.js"></script>
+  <link rel="icon" href="imgs/Logo.png" />
+  <link rel="stylesheet" href="Stats.css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
 <body>
 
-<div class="site">
+<div id="app" class="site">
 
   <header class="navbar">
     <div class="nav-left">
-      <img src="imgs/Logo.png" class="logo">
-      <a href="#">Home</a>
-      <a href="#" id="nav-team" class="active-nav" onclick="showRosterPage(); return false;">Team</a>
+      <img src="imgs/Logo.png" class="logo" alt="Logo" />
+      <a href="index.html">Home</a>
+      <a href="#" :class="{ 'active-nav': true }" @click.prevent="showTab('team-stats')">Team</a>
       <a href="#">Information</a>
     </div>
     <div class="nav-right">
@@ -30,135 +30,160 @@
   <h1 class="page-title">Team Roster</h1>
 
   <div class="tab-row">
-    <button class="tab-btn active" id="btn-team-stats" onclick="showTab('team-stats')">Team Stats</button>
-    <button class="tab-btn"        id="btn-player-stats" onclick="showTab('player-stats')">Player Stats</button>
+    <button
+      class="tab-btn"
+      :class="{ active: activeTab === 'team-stats' }"
+      @click="showTab('team-stats')"
+    >Team Stats</button>
+    <button
+      class="tab-btn"
+      :class="{ active: activeTab === 'player-stats' }"
+      @click="showTab('player-stats')"
+    >Player Stats</button>
   </div>
 
-  <!-- Team Stats Section -->
-  <div id="section-team-stats" class="section visible">
+  <div
+    id="section-team-stats"
+    class="section"
+    :class="{ visible: activeTab === 'team-stats' }"
+  >
     <div class="stats-box">
       <div class="stats-title">Team Stats</div>
       <div class="stats-grid">
-        <div>Wins: 0</div>
-        <div>Losses: 0</div>
-        <div>Team Goals: 0</div>
-        <div>Team Assists: 0</div>
-        <div>Team Points: 0</div>
-        <div>Team GBs: 0</div>
-        <div class="full">FOS Win Percent: 100%</div>
+        <div>Wins: {{ teamStats.wins ?? 0 }}</div>
+        <div>Losses: {{ teamStats.losses ?? 0 }}</div>
+        <div>Team Goals: {{ teamStats.teamGoals ?? 0 }}</div>
+        <div>Team Assists: {{ teamStats.teamAssists ?? 0 }}</div>
+        <div>Team Points: {{ teamStats.teamPoints ?? 0 }}</div>
+        <div>Team GBs: {{ teamStats.teamGBs ?? 0 }}</div>
+        <div class="full">FOS Win Percent: {{ teamStats.fosWinPercent ?? '100%' }}</div>
       </div>
     </div>
+
     <div class="footer">
-      <span class="ig-icon">&#9679;</span>
+      <div class="instagram-icon">
+        <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
+      </div>
       <span>woplinger@frhsd.com</span>
     </div>
   </div>
 
-  <!-- Player Stats Section -->
-  <div id="section-player-stats" class="section">
-
-    <h2 class="player-stats-title" id="player-section-title">Player Stats</h2>
+  <div
+    id="section-player-stats"
+    class="section"
+    :class="{ visible: activeTab === 'player-stats' }"
+  >
+    <h2 class="player-stats-title">
+      {{ isArchived ? 'Archived Players' : 'Player Stats' }}
+    </h2>
 
     <div class="archive-toggle-row">
-      <button class="archive-btn archived-btn" id="archive-toggle-btn" onclick="toggleArchive()">Archived</button>
+      <button
+        class="archive-btn"
+        :class="isArchived ? 'active-btn' : 'archived-btn'"
+        @click="toggleArchive"
+      >
+        {{ isArchived ? 'Active' : 'Archived' }}
+      </button>
     </div>
 
-    <!-- Active Players -->
-    <div id="active-players-view">
-      <div class="cards-section">
+    <div class="cards-section">
 
-        <!-- Coaches row -->
-        <div class="cards-row" style="justify-content:center; gap:16px; margin-bottom:14px;">
-          <div class="player-card coach">
-            <div class="card-img">
-              <img src="https://picsum.photos/seed/coach1/120/120" alt="Bill Oplinger" />
-            </div>
-            <div class="card-name">Bill Oplinger</div>
-            <div class="card-sub">Head Coach</div>
+      <div v-if="!isArchived" class="cards-row coaches-row">
+        <div
+          v-for="coach in coaches"
+          :key="coach.id"
+          class="player-card coach"
+        >
+          <div class="card-img">
+            <img :src="coach.image" :alt="coach.name" />
           </div>
-          <div class="player-card coach">
-            <div class="card-img">
-              <img src="https://picsum.photos/seed/coach2/120/120" alt="Christopher Ploe" />
-            </div>
-            <div class="card-name">Christopher Ploe</div>
-            <div class="card-sub">Assistant Coach</div>
-          </div>
-        </div>
-
-        <!-- Players row -->
-        <div class="cards-row">
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/p1/120/120" alt="Player 1" /></div>
-            <div class="card-name">Player 1</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/p2/120/120" alt="Player 2" /></div>
-            <div class="card-name">Player 2</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/p3/120/120" alt="Player 3" /></div>
-            <div class="card-name">Player 3</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/p4/120/120" alt="Player 4" /></div>
-            <div class="card-name">Player 4</div><div class="card-sub">Senior</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Archived Players -->
-    <div id="archived-players-view" style="display:none;">
-      <div class="cards-section">
-        <div class="cards-row">
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a1/120/120" alt="Player 1" /></div>
-            <div class="card-name">Player 1</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a2/120/120" alt="Player 2" /></div>
-            <div class="card-name">Player 2</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a3/120/120" alt="Player 3" /></div>
-            <div class="card-name">Player 3</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a4/120/120" alt="Player 4" /></div>
-            <div class="card-name">Player 4</div><div class="card-sub">Senior</div>
-          </div>
-        </div>
-        <div class="cards-row">
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a5/120/120" alt="Player 1" /></div>
-            <div class="card-name">Player 1</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a6/120/120" alt="Player 2" /></div>
-            <div class="card-name">Player 2</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a7/120/120" alt="Player 3" /></div>
-            <div class="card-name">Player 3</div><div class="card-sub">Senior</div>
-          </div>
-          <div class="player-card">
-            <div class="card-img"><img src="https://picsum.photos/seed/a8/120/120" alt="Player 4" /></div>
-            <div class="card-name">Player 4</div><div class="card-sub">Senior</div>
-          </div>
+          <div class="card-name">{{ coach.name }}</div>
+          <div class="card-sub">{{ coach.role }}</div>
         </div>
       </div>
+
+      <div class="cards-row">
+        <div
+          v-for="player in displayedPlayers"
+          :key="player.id"
+          class="player-card"
+          @click="openModal(player)"
+        >
+          <div class="card-img">
+            <img :src="player.image" :alt="player.name" />
+          </div>
+          <div class="card-name">{{ player.name }}</div>
+          <div class="card-sub">{{ player.grade }}</div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="footer">
-      <span class="ig-icon">&#9679;</span>
-      <span>woplinger@frhsd.com</span>
+    <footer class="footer">
+      <div class="instagram-icon">
+        <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
+      </div>
+      <p>woplinger@frhsd.com</p>
+    </footer>
+  </div>
+
+  <div
+    class="modal-overlay"
+    :class="{ open: modalOpen }"
+    @click.self="closeModal"
+  >
+    <div class="modal-content" v-if="selectedPlayer">
+
+      <button class="modal-close" @click="closeModal">&times;</button>
+
+      <div class="modal-body">
+
+        <img
+          class="modal-img"
+          :src="selectedPlayer.image"
+          :alt="selectedPlayer.name"
+        />
+
+        <div class="modal-right">
+
+          <div class="modal-player-name">{{ selectedPlayer.name }}</div>
+
+          <div class="modal-position">Position: {{ selectedPlayer.position }}</div>
+
+          <div
+            v-for="(season, idx) in selectedPlayer.seasons"
+            :key="idx"
+            class="accordion-item"
+            :class="{ open: season._open }"
+          >
+            <button class="accordion-header" @click="toggleAccordion(season)">
+              <span>{{ season.year }} Stats</span>
+              <span class="accordion-arrow">&#8681;</span>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-stats-grid">
+                <div>Goals: {{ season.goals }}</div>
+                <div>Assists: {{ season.assists }}</div>
+                <div>Points: {{ season.points }}</div>
+                <div>GBs: {{ season.gbs }}</div>
+                <div>Games Played: {{ season.gamesPlayed }}</div>
+                <div>Shots: {{ season.shots }}</div>
+                <div>Shot %: {{ season.shotPct }}</div>
+                <div>Turnovers: {{ season.turnovers }}</div>
+                <div>Caused TO: {{ season.causedTurnovers }}</div>
+                <div>FOS Win %: {{ season.fosWinPercent }}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+  </div>
 
-  </div><!-- end #section-player-stats -->
+</div>
 
-</div><!-- end .site -->
-
-<script src="main.js"></script>
+<script src="Stats.js"></script>
 </body>
 </html>
