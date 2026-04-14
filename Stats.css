@@ -66,6 +66,10 @@ body {
   font-weight: bold;
   padding: 36px 0 14px;
   color: var(--dark);
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-underline-offset: 8px;
+  text-decoration-thickness: 4px;
 }
 
 .tab-row {
@@ -118,7 +122,7 @@ body {
   font-weight: bold;
   text-align: center;
   margin-bottom: 36px;
-  border-bottom: 3px solid var(--blue);
+  border-bottom: 3px solid var(--yellow);
   padding-bottom: 16px;
 }
 
@@ -139,6 +143,12 @@ body {
   font-size: 2.6rem;
   font-weight: bold;
   margin-bottom: 14px;
+  border-bottom: 3px solid var(--yellow);
+  padding-bottom: 10px;
+  width: 92%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .archive-toggle-row {
