@@ -1,5 +1,21 @@
 const { createApp, ref, computed, onMounted } = Vue;
 
+const SHEET_ID = '1iXzvrfzcY6m-bH3nld_vfufiKLh8Zd1YyGS8wrB2F10';
+
+async function fetchSheet(sheetName) {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+  const res = await fetch(url);
+  const text = await res.text();
+  const json = JSON.parse(text.substring(47).slice(0, -2));
+
+  const cols = json.table.cols.map(c => c.label);
+  return json.table.rows.map(row =>
+    Object.fromEntries(
+      cols.map((col, i) => [col, row.c[i] ? row.c[i].v : null])
+    )
+  );
+}
+
 createApp({
   setup() {
     const activeTab      = ref('team-stats');
@@ -12,13 +28,27 @@ createApp({
 
     onMounted(async () => {
       try {
-        const res  = await fetch('Stats.json');
-        const data = await res.json();
-        teamStats.value = data.teamStats;
-        players.value   = data.players;
-        coaches.value   = data.coaches;
+        const [teamRows, coachRows, playerRows, seasonRows] = await Promise.all([
+          fetchSheet('TeamStats'),
+          fetchSheet('Coaches'),
+          fetchSheet('Players'),
+          fetchSheet('Seasons'),
+        ]);
+
+        teamStats.value = teamRows[0];
+
+        coaches.value = coachRows;
+
+        players.value = playerRows.map(player => ({
+          ...player,
+          archived: player.archived === true || player.archived === 'TRUE',
+          seasons: seasonRows
+            .filter(s => s.playerId === player.id)
+            .map(s => ({ ...s, _open: false })),
+        }));
+
       } catch (e) {
-        console.error('Failed to load Stats.json:', e);
+        console.error('Failed to load from Google Sheets:', e);
       }
     });
 
