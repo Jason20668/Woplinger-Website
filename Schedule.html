@@ -2,125 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marlboro HS Boys Lacrosse</title>
-    <link rel="stylesheet" href="Css/Schedule.css">
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule</title>
+  <link rel="stylesheet" href="Schedule.css">
 </head>
 
 <body>
-    <header>
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
 
-        <div class="desktop-nav">
-            <!-- Main navigation -->
-            <nav class="main-nav">
-                <ul>
-                    <div class="left-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="Stats.html">Stats</a></li>
-                        <li><a href="Parents.html">Parents Club</a></li>
-                    </div>
-
-                    <div class="logo-container">
-                        <img src="imgs/Logo.png" alt="Logo" width="70" height="70">
-                    </div>
-
-                    <div class="right-menu">
-                        <li><a href="Schedule.html">Schedule</a></li>
-                        <li><a href="Gallery.html">Gallery</a></li>
-                        <li><a href="Instagram.html">Follow our IG!</a></li>
-                    </div>
-                </ul>
-            </nav>
-
-            <!-- Secondary navigation -->
-            <nav class="secondary-nav">
-                <ul>
-                    <li class="left-item"><a href="index.html">Boys Lacrosse</a></li>
-                    <div class="right-items">
-                        <li><a href="index.html">Coaches</a></li>
-                        <li><a href="Varsity.html">Varsity</a></li>
-                        <li><a href="Tryouts.html">JV / Freshman / Tryouts</a></li>
-                    </div>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Single mobile menu container -->
-        <div class="mobile-menu-container">
-            <nav class="mobile-nav">
-                <ul>
-                    <!-- Primary nav items -->
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Stats.html"">Stats</a></li>
-                    <li><a href="Parents.html">Parents Club</a></li>
-                    <li><a href="Schedule.html">Schedule</a></li>
-                    <li><a href="Gallery.html">Gallery</a></li>
-                    <li><a href="Instagram.html">Follow our IG!</a></li>
-
-                    <!-- Divider -->
-                    <li class="divider"></li>
-
-                    <!-- Secondary nav items -->
-                    <li><a href="#coaches">Coaches</a></li>
-                    <li><a href="Varsity.html">Varsity</a></li>
-                    <li><a href="Tryouts.html">JV / Freshman / Tryouts</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <br>
-
-    <section class="section2" id="section2">
-        <div class="container2">
-            <div class="row pt-5 justify-content-center">
-                <h1 class="font-main text-center">2025-2026 Season Schedule</h1>
-                <div class="col-8 d-flex justify-content-center flex-wrap" id="schedule-pair">
-                    <!-- Two schedule images side-by-side -->
-                    <img class="section2-img mx-2" src="imgs/2025-2026schedule1.jpg" alt="2025-2026 Schedule Part 1">
-                    
-                    <img class="section2-img mx-2" src="imgs/2025-2026schedule2.jpg" alt="2025-2026 Schedule Part 2">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <br>
-    <br>
-    <br>
-
-    <!-- image modal for click-to-zoom -->
-    <div id="imageModal" class="image-modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage" alt="enlarged schedule">
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="imgs/Logo.png" class="logo">
+      <a href="index.html">Home</a>
+      <a href="Stats.html">Team</a>
+      <a href="Info.html">Information</a>
     </div>
+    <div class="nav-right">
+      <a href="Schedule.html">Schedule</a>
+      <a href="Gallery.html">Gallery</a>
+      <a href="Instagram.html">Instagram</a>
+    </div>
+  </header>
 
-    <footer>
-        <div class="footerContainer">
-            <div class="socialIcons">
-                <a onclick="window.open('https://www.instagram.com/marlboroboyslax?igsh=YjMzYXJhYWs5em0w')"><i
-                        class="fa-brands fa-instagram"></i></a>
-            </div>
-            <div class="footerNav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="Parents.html">Parents Club</a></li>
-                    <li><a href="Schedule.html">Schedule</a></li>
-                    <li><a href="Stats.html">Stats</a></li>
-                    <li><a href="Gallery.html">Gallery</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+  <main class="main-content">
+    <h1 class="page-title">Schedule</h1>
+
+    <div class="schedule-list" id="scheduleList">
+      <!-- Cards injected by Schedule.js -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="instagram-icon">
+      <img src="imgs/Instagram_Logo.jpg" alt="Instagram">
+    </div>
+    <p>woplinger@frhsd.com</p>
+  </footer>
+
+  <script src="Schedule.js"></script>
 </body>
 
 </html>

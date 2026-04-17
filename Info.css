@@ -1,0 +1,190 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background-color: #5500FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 48px;
+  width: 100%;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar .logo {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  flex: 1;
+  padding: 32px 40px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+/* Underline accent below title */
+.main-content > .page-title::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 3px;
+  background: #FFE100;
+  margin: 8px auto 28px;
+}
+
+/* ===== CARD GRID (2 columns) ===== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* ===== CARD GRID (single, centered) ===== */
+.cards-grid-single {
+  display: flex;
+  justify-content: center;
+}
+
+.cards-grid-single .info-card {
+  width: calc(50% - 12px);
+}
+
+/* ===== INFO CARD ===== */
+.info-card {
+  border: 2px solid #5500FF;
+  border-radius: 4px;
+  padding: 36px 32px 44px;
+  background: #ffffff;
+  min-height: 200px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-card:hover {
+  box-shadow: 5px 5px 0px #5500FF;
+  transform: translateY(-3px);
+}
+
+.info-card h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: #1a1a1a;
+}
+
+.info-card p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: #FFE100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  gap: 6px;
+}
+
+.footer .instagram-icon img {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+}
+
+.footer p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid-single .info-card {
+    width: 100%;
+  }
+
+  .main-content {
+    padding: 24px 20px 32px;
+  }
+
+  .navbar a {
+    font-size: 0.75rem;
+    padding: 5px 7px;
+  }
+}

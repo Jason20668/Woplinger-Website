@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,178 +9,140 @@
   <link rel="stylesheet" href="Stats.css" />
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
+
 <body>
 
-<div id="app" class="site">
+  <div id="app" class="site">
 
-  <header class="navbar">
-    <div class="nav-left">
-      <img src="imgs/Logo.png" class="logo" alt="Logo" />
-      <a href="index.html">Home</a>
-      <a href="#" :class="{ 'active-nav': true }" @click.prevent="showTab('team-stats')">Team</a>
-      <a href="#">Information</a>
-    </div>
-    <div class="nav-right">
-      <a href="#">Schedule</a>
-      <a href="#">Gallery</a>
-      <a href="#">Instagram</a>
-      <a href="#">Admin</a>
-    </div>
-  </header>
-
-  <h1 class="page-title">Team Roster</h1>
-
-  <div class="tab-row">
-    <button
-      class="tab-btn"
-      :class="{ active: activeTab === 'team-stats' }"
-      @click="showTab('team-stats')"
-    >Team Stats</button>
-    <button
-      class="tab-btn"
-      :class="{ active: activeTab === 'player-stats' }"
-      @click="showTab('player-stats')"
-    >Player Stats</button>
-  </div>
-
-  <div
-    id="section-team-stats"
-    class="section"
-    :class="{ visible: activeTab === 'team-stats' }"
-  >
-    <div class="stats-box">
-      <div class="stats-title">Team Stats</div>
-      <div class="stats-grid">
-        <div>Wins: {{ teamStats.wins ?? 0 }}</div>
-        <div>Losses: {{ teamStats.losses ?? 0 }}</div>
-        <div>Team Goals: {{ teamStats.teamGoals ?? 0 }}</div>
-        <div>Team Assists: {{ teamStats.teamAssists ?? 0 }}</div>
-        <div>Team Points: {{ teamStats.teamPoints ?? 0 }}</div>
-        <div>Team GBs: {{ teamStats.teamGBs ?? 0 }}</div>
-        <div class="full">FOS Win Percent: {{ teamStats.fosWinPercent ?? '100%' }}</div>
+    <header class="navbar">
+      <div class="nav-left">
+        <img src="imgs/Logo.png" class="logo">
+        <a href="index.html">Home</a>
+        <a href="Stats.html">Team</a>
+        <a href="Info.html">Information</a>
       </div>
-    </div>
-
-    <div class="footer">
-      <div class="instagram-icon">
-        <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
+      <div class="nav-right">
+        <a href="Schedule.html">Schedule</a>
+        <a href="Gallery.html">Gallery</a>
+        <a href="Instagram.html">Instagram</a>
       </div>
-      <span>woplinger@frhsd.com</span>
-    </div>
-  </div>
+    </header>
 
-  <div
-    id="section-player-stats"
-    class="section"
-    :class="{ visible: activeTab === 'player-stats' }"
-  >
-    <h2 class="player-stats-title">
-      {{ isArchived ? 'Archived Players' : 'Player Stats' }}
-    </h2>
+    <h1 class="page-title">Team Roster</h1>
 
-    <div class="archive-toggle-row">
-      <button
-        class="archive-btn"
-        :class="isArchived ? 'active-btn' : 'archived-btn'"
-        @click="toggleArchive"
-      >
-        {{ isArchived ? 'Active' : 'Archived' }}
-      </button>
+    <div class="tab-row">
+      <button class="tab-btn" :class="{ active: activeTab === 'team-stats' }" @click="showTab('team-stats')">Team
+        Stats</button>
+      <button class="tab-btn" :class="{ active: activeTab === 'player-stats' }" @click="showTab('player-stats')">Player
+        Stats</button>
     </div>
 
-    <div class="cards-section">
-
-      <div v-if="!isArchived" class="cards-row coaches-row">
-        <div
-          v-for="coach in coaches"
-          :key="coach.id"
-          class="player-card coach"
-        >
-          <div class="card-img">
-            <img :src="coach.image" :alt="coach.name" />
-          </div>
-          <div class="card-name">{{ coach.name }}</div>
-          <div class="card-sub">{{ coach.role }}</div>
+    <div id="section-team-stats" class="section" :class="{ visible: activeTab === 'team-stats' }">
+      <div class="stats-box">
+        <div class="stats-title">Team Stats</div>
+        <div class="stats-grid">
+          <div>Wins: {{ teamStats.wins ?? 0 }}</div>
+          <div>Losses: {{ teamStats.losses ?? 0 }}</div>
+          <div>Team Goals: {{ teamStats.teamGoals ?? 0 }}</div>
+          <div>Team Assists: {{ teamStats.teamAssists ?? 0 }}</div>
+          <div>Team Points: {{ teamStats.teamPoints ?? 0 }}</div>
+          <div>Team GBs: {{ teamStats.teamGBs ?? 0 }}</div>
+          <div class="full">FOS Win Percent: {{ teamStats.fosWinPercent ?? '100%' }}</div>
         </div>
       </div>
 
-      <div class="cards-row">
-        <div
-          v-for="player in displayedPlayers"
-          :key="player.id"
-          class="player-card"
-          @click="openModal(player)"
-        >
-          <div class="card-img">
-            <img :src="player.image" :alt="player.name" />
-          </div>
-          <div class="card-name">{{ player.name }}</div>
-          <div class="card-sub">{{ player.grade }}</div>
+      <div class="footer">
+        <div class="instagram-icon">
+          <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
         </div>
+        <span>woplinger@frhsd.com</span>
       </div>
-
     </div>
 
-    <footer class="footer">
-      <div class="instagram-icon">
-        <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
+    <div id="section-player-stats" class="section" :class="{ visible: activeTab === 'player-stats' }">
+      <h2 class="player-stats-title">
+        {{ isArchived ? 'Archived Players' : 'Player Stats' }}
+      </h2>
+
+      <div class="archive-toggle-row">
+        <button class="archive-btn" :class="isArchived ? 'active-btn' : 'archived-btn'" @click="toggleArchive">
+          {{ isArchived ? 'Active' : 'Archived' }}
+        </button>
       </div>
-      <p>woplinger@frhsd.com</p>
-    </footer>
-  </div>
 
-  <div
-    class="modal-overlay"
-    :class="{ open: modalOpen }"
-    @click.self="closeModal"
-  >
-    <div class="modal-content" v-if="selectedPlayer">
+      <div class="cards-section">
 
-      <button class="modal-close" @click="closeModal">&times;</button>
+        <div v-if="!isArchived" class="cards-row coaches-row">
+          <div v-for="coach in coaches" :key="coach.id" class="player-card coach">
+            <div class="card-img">
+              <img :src="coach.image" :alt="coach.name" />
+            </div>
+            <div class="card-name">{{ coach.name }}</div>
+            <div class="card-sub">{{ coach.role }}</div>
+          </div>
+        </div>
 
-      <div class="modal-body">
+        <div class="cards-row">
+          <div v-for="player in displayedPlayers" :key="player.id" class="player-card" @click="openModal(player)">
+            <div class="card-img">
+              <img :src="player.image" :alt="player.name" />
+            </div>
+            <div class="card-name">{{ player.name }}</div>
+            <div class="card-sub">{{ player.grade }}</div>
+          </div>
+        </div>
 
-        <img
-          class="modal-img"
-          :src="selectedPlayer.image"
-          :alt="selectedPlayer.name"
-        />
+      </div>
 
-        <div class="modal-right">
+      <footer class="footer">
+        <div class="instagram-icon">
+          <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
+        </div>
+        <p>woplinger@frhsd.com</p>
+      </footer>
+    </div>
 
-          <div class="modal-player-name">{{ selectedPlayer.name }}</div>
+    <div class="modal-overlay" :class="{ open: modalOpen }" @click.self="closeModal">
+      <div class="modal-content" v-if="selectedPlayer">
 
-          <div class="modal-position">Position: {{ selectedPlayer.position }}</div>
+        <button class="modal-close" @click="closeModal">&times;</button>
 
-          <div
-            v-for="(season, idx) in selectedPlayer.seasons"
-            :key="idx"
-            class="accordion-item"
-            :class="{ open: season._open }"
-          >
-            <button class="accordion-header" @click="toggleAccordion(season)">
-              <span>{{ season.year }} Stats</span>
-              <span class="accordion-arrow">&#8681;</span>
-            </button>
-            <div class="accordion-body">
-              <div class="accordion-stats-grid">
-                <div>Goals: {{ season.goals }}</div>
-                <div>Assists: {{ season.assists }}</div>
-                <div>Points: {{ season.points }}</div>
-                <div>GBs: {{ season.gbs }}</div>
-                <div>Games Played: {{ season.gamesPlayed }}</div>
-                <div>FOS Win %: {{ season.fosWinPercent }}</div>
+        <div class="modal-body">
+
+          <img class="modal-img" :src="selectedPlayer.image" :alt="selectedPlayer.name" />
+
+          <div class="modal-right">
+
+            <div class="modal-player-name">{{ selectedPlayer.name }}</div>
+
+            <div class="modal-position">Position: {{ selectedPlayer.position }}</div>
+
+            <div v-for="(season, idx) in selectedPlayer.seasons" :key="idx" class="accordion-item"
+              :class="{ open: season._open }">
+              <button class="accordion-header" @click="toggleAccordion(season)">
+                <span>{{ season.year }} Stats</span>
+                <span class="accordion-arrow">&#8681;</span>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-stats-grid">
+                  <div>Goals: {{ season.goals }}</div>
+                  <div>Assists: {{ season.assists }}</div>
+                  <div>Points: {{ season.points }}</div>
+                  <div>GBs: {{ season.gbs }}</div>
+                  <div>Games Played: {{ season.gamesPlayed }}</div>
+                  <div>FOS Win %: {{ season.fosWinPercent }}</div>
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 
-</div>
-
-<script src="Stats.js"></script>
+  <script src="Stats.js"></script>
 </body>
+
 </html>
