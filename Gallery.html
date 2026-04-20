@@ -2,256 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Marlboro HS Boys Lacrosse</title>
-    <link rel="stylesheet" href="Gallery.css">
-    <script defer src="script2.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Marlboro HS Boys Lacrosse</title>
+  <link rel="stylesheet" href="Gallery.css">
 </head>
 
 <body>
 
-    <header class="navbar">
-        <div class="nav-left">
-            <img src="imgs/Logo.png" class="logo">
-            <a href="index.html">Home</a>
-            <a href="Stats.html">Team</a>
-            <a href="Info.html">Information</a>
-        </div>
-        <div class="nav-right">
-            <a href="Schedule.html">Schedule</a>
-            <a href="Gallery.html">Gallery</a>
-            <a href="Instagram.html">Instagram</a>
-        </div>
-    </header>
+  <header class="navbar">
+    <div class="nav-left">
+      <img src="imgs/Logo.png" class="logo">
+      <a href="index.html">Home</a>
+      <a href="Stats.html">Team</a>
+      <a href="Info.html">Information</a>
+    </div>
+    <div class="nav-right">
+      <a href="Schedule.html">Schedule</a>
+      <a href="Gallery.html">Gallery</a>
+      <a href="Instagram.html">Instagram</a>
+    </div>
+  </header>
 
-    <section class="gallery-page">
-        <div class="container">
-            <div class="filter-controls">
-                <button class="filter-btn active" data-filter="all">All Photos</button>
-                <button class="filter-btn" data-filter="game">Game Highlights</button>
-                <button class="filter-btn" data-filter="team">Team Photos</button>
-                <button class="filter-btn" data-filter="Other">Other</button>
-            </div>
+  <section class="gallery-page">
+    <div class="container">
 
-            <div class="gallery-grid">
+      <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">All Photos</button>
+        <button class="filter-btn" data-filter="gh">Game Highlights</button>
+        <button class="filter-btn" data-filter="tp">Team Photos</button>
+      </div>
 
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Mason1.jpg" alt="Game action shot">
-                    <div class="gallery-caption">2024 Marlboro vs. Howell | Trombetta</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Muhlbach1.jpg" alt="Player shooting">
-                    <div class="gallery-caption">Muhlbach Highlight</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Shane1.jpg" alt="Defense play">
-                    <div class="gallery-caption">2024 Shane Attack</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Gellis1.jpg" alt="Midfield action">
-                    <div class="gallery-caption">2024 Gellis Clear</div>
-                </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <p class="loading-msg">Loading photos...</p>
+      </div>
 
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/GoodSports2.jpg" alt="team">
-                    <div class="gallery-caption">2024 Goodsports Champions 👑</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Shaps1.jpg" alt="Wall Game">
-                    <div class="gallery-caption">2025 Scrimmage vs. Wall | Shapiro</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/100Silvia.jpg" alt="Other">
-                    <div class="gallery-caption">Andrew Silvias 100 Career Goals</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Dupey1.jpg" alt="game">
-                    <div class="gallery-caption">2025 Scrimmage vs. Wall | Dupey</div>
-                </div>
+    </div>
+  </section>
 
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/RBC.png" alt="RBC Win">
-                    <div class="gallery-caption">RBC Win</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Celly.jpg" alt="Celly">
-                    <div class="gallery-caption">Gellis and Dupey Celly</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/TeamKneeling.png" alt="2025 Senior day">
-                    <div class="gallery-caption">2025 Senior day</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Shane2.jpg" alt="NA">
-                    <div class="gallery-caption">Shane Gallo</div>
-                </div>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
 
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Halloween.jpg" alt="Halloween team">
-                    <div class="gallery-caption">2024 Harvest League Halloween Game</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/Seniors.png" alt="Seniors group">
-                    <div class="gallery-caption">Senior Players</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/GAMEDAY.jpg" alt="GAMEDAY">
-                    <div class="gallery-caption">2023 Varsity Squad</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/TeamHalf.png" alt="Half Time">
-                    <div class="gallery-caption">2025 Senior day Half time</div>
-                </div>
+  <footer class="footer">
+    <div class="instagram-icon">
+      <img src="imgs/Instagram_Logo.jpg" alt="Instagram">
+    </div>
+    <p>woplinger@frhsd.com</p>
+  </footer>
 
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/HuddlevsJackson.jpg" alt="Team Huddle">
-                    <div class="gallery-caption">2025 Huddle against Jackson</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/BDubsPoster.jpg" alt="Buffalo Wild Wings Poster">
-                    <div class="gallery-caption">Buffalo Wild Wings Poster</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/BDubstable.jpg" alt="BDubs Table">
-                    <div class="gallery-caption">2025 Team Buffalo Wild Wings</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Helmets.jpg" alt="Helmets">
-                    <div class="gallery-caption">Preseason Helmet Display</div>
-                </div>
-
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Muhlbach2.jpg" alt="Muhlbach tuff">
-                    <div class="gallery-caption">Aj Muhlbach</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Mason2.jpg" alt="Mason flic">
-                    <div class="gallery-caption">2025 Mason vs. Freehold</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/2024Lineup.jpg" alt="Lineup">
-                    <div class="gallery-caption">2024 Lineup</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/2024Seniorday.jpg" alt="2024 Senior Day">
-                    <div class="gallery-caption">2024 Senior Day</div>
-                </div>
-
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Silvia1.jpg" alt="Silvia Faceoff win">
-                    <div class="gallery-caption">2025 Silvia Faceoff win</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Ogs.jpg" alt="2021 banquet">
-                    <div class="gallery-caption">2021 banquet</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/AsianHeritage.jpg" alt="Team fun">
-                    <div class="gallery-caption">2022 Asians</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/Team1.jpg" alt="2022 JV Bandits">
-                    <div class="gallery-caption">2022 JV Bandits</div>
-                </div>
-
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Decorations1.jpg" alt="Senior day Decor">
-                    <div class="gallery-caption">2025 Senior day decorations</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/DJ.jpg" alt="DJ">
-                    <div class="gallery-caption">DJ Silvia</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Bus2.jpg" alt="Team Bus">
-                    <div class="gallery-caption">2023 JV Bandits</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Silvia2.jpg" alt="Silvia Faceoff win 2">
-                    <div class="gallery-caption">2025 Silvia Faceoff win</div>
-                </div>
-
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Bogs1.jpg" alt="Matthew Bogner">
-                    <div class="gallery-caption">2025 Matthew Bogner vs. Freehold</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Bus.jpg" alt="Bus">
-                    <div class="gallery-caption">2022 JV Bus Team flic</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Mart1.jpg" alt="Matt Hirsch">
-                    <div class="gallery-caption">2025 Matt Hirsch vs. New Egypt</div>
-                </div>
-                <div class="gallery-item" data-category="Other">
-                    <img src="imgs/Shenanigans.jpg" alt="Pole Switchup">
-                    <div class="gallery-caption">Pole Switchup</div>
-                </div>
-
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Steele1.jpg" alt="Matthew Steele">
-                    <div class="gallery-caption">2025 Matthew Steele</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/WinoverBrick.jpg" alt="Brick Team pic">
-                    <div class="gallery-caption">2025 Win over Brick Team pic</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Gellis&Shaps.jpg" alt="Gellis & Shaps">
-                    <div class="gallery-caption">2025 Gellis & Shaps vs. Jackson Memorial</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Gellis2.jpg" alt="Tyler Gellis">
-                    <div class="gallery-caption">2025 Gellis vs. Jackson Memorial</div>
-                </div>
-
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Dan1.jpg" alt="Daniel Onushkanich">
-                    <div class="gallery-caption">2025 Dan vs. Jackson Memorial</div>
-                </div>
-                <div class="gallery-item" data-category="team">
-                    <img src="imgs/Flag1.jpg" alt="Win over Jackson Memorial Storm">
-                    <div class="gallery-caption">2025 Win over Jackson Memorial Stormed Field</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Silvia3.jpg" alt="Andrew Silvia">
-                    <div class="gallery-caption">2025 Andrew Silvia</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Shaps2.jpg" alt="Samuel Shapiro">
-                    <div class="gallery-caption">2025 Samuel Shapiro</div>
-                </div>
-
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Silvia4.jpg" alt="Andrew Silvia">
-                    <div class="gallery-caption">2025 Andrew Silvia Faceoff</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/JacksonCelly.jpg" alt="Jackson Memorial Celly">
-                    <div class="gallery-caption">2025 Jackson Memorial Celly</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Shane3.jpg" alt="Shane Gallo">
-                    <div class="gallery-caption">2025 Shane Gallo vs. Jackson Memorial</div>
-                </div>
-                <div class="gallery-item" data-category="game">
-                    <img src="imgs/Silvia5.jpg" alt="Andrew Silvia">
-                    <div class="gallery-caption">2025 Andrew Silvia</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="instagram-icon">
-            <img src="imgs/Instagram_Logo.jpg" alt="Instagram">
-        </div>
-        <p>woplinger@frhsd.com</p>
-    </footer>
-
+  <script src="Gallery.js"></script>
 </body>
 
 </html>

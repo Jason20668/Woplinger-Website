@@ -16,7 +16,7 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background-color: #5500FF;
+  background-color: #3b00ff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,7 +93,7 @@ body {
 
 /* ===== GAME CARD ===== */
 .game-card {
-  border: 3px solid #5500FF;
+  border: 3px solid #3b00ff;
   border-radius: 6px;
   padding: 28px 36px 30px;
   background: #ffffff;
@@ -109,7 +109,7 @@ body {
 }
 
 .game-card:hover {
-  box-shadow: 6px 6px 0px #5500FF;
+  box-shadow: 6px 6px 0px #3b00ff;
   transform: translateY(-3px);
 }
 
