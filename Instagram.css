@@ -1,0 +1,83 @@
+:root {
+  --blue: #3b00ff;
+  --yellow: #FFD700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  padding-bottom: 70px;
+}
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--blue);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.navbar a:hover {
+  color: #FFE100;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Instagram Section ── */
+.instagram {
+  padding: 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Footer ── */
+.footer {
+  background: var(--yellow);
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.instagram-icon {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.instagram-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}

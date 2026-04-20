@@ -21,8 +21,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-bottom: 70px;
 }
 
+/* ── Navbar ── */
 .navbar {
   background: var(--blue);
   color: white;
@@ -37,6 +39,7 @@ body {
   text-decoration: none;
   margin: 0 10px;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .navbar a:hover {
@@ -255,27 +258,32 @@ body {
   text-align: center;
 }
 
+/* ── Footer ── */
 .footer {
   background: var(--yellow);
   text-align: center;
-  padding: 18px;
+  padding: 15px;
   font-weight: bold;
-  font-size: 1.05rem;
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .instagram-icon {
+  margin-bottom: 5px;
   display: flex;
   justify-content: center;
-  margin-bottom: 6px;
 }
 
 .instagram-icon img {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
 
+/* ── Modal ── */
 .modal-overlay {
   display: none;
   position: fixed;
