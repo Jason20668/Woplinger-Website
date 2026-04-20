@@ -3,9 +3,60 @@ const modal    = document.getElementById("emailModal");
 const btn      = document.getElementById("emailBtn");
 const closeBtn = document.querySelector(".close-btn");
 
-btn.onclick = () => modal.style.display = "flex";
+btn.onclick = () => {
+  modal.style.display = "flex";
+  // Reset form state when reopening
+  document.querySelector(".send-btn").disabled = false;
+  document.querySelector(".send-btn").textContent = "Send";
+  document.getElementById("form-success").style.display = "none";
+  document.getElementById("form-error").style.display = "none";
+};
 closeBtn.onclick = () => modal.style.display = "none";
 window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+// ── Send email via Formspree ──────────────────────────────────
+document.querySelector(".send-btn").onclick = async () => {
+  const name     = document.querySelector('.form-row input[placeholder="Name"]').value.trim();
+  const subject  = document.querySelector('.form-row input[placeholder="Subject"]').value.trim();
+  const replyTo  = document.querySelector('.form-row input[placeholder="Email"]').value.trim();
+  const body     = document.querySelector("textarea").value.trim();
+
+  if (!name || !subject || !replyTo || !body) {
+    alert("Please fill out all fields before sending.");
+    return;
+  }
+
+  const sendBtn = document.querySelector(".send-btn");
+  sendBtn.disabled = true;
+  sendBtn.textContent = "Sending...";
+
+  try {
+    const res = await fetch("https://formspree.io/f/mpqkllav", {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({ name, subject, email: replyTo, message: body }),
+    });
+
+    if (res.ok) {
+      document.getElementById("form-success").style.display = "block";
+      document.getElementById("form-error").style.display = "none";
+      // Clear fields
+      document.querySelector('.form-row input[placeholder="Name"]').value = "";
+      document.querySelector('.form-row input[placeholder="Subject"]').value = "";
+      document.querySelector('.form-row input[placeholder="Email"]').value = "";
+      document.querySelector("textarea").value = "";
+      // Auto-close after 2 seconds
+      setTimeout(() => { modal.style.display = "none"; }, 2000);
+    } else {
+      throw new Error("Server error");
+    }
+  } catch (e) {
+    document.getElementById("form-error").style.display = "block";
+    document.getElementById("form-success").style.display = "none";
+    sendBtn.disabled = false;
+    sendBtn.textContent = "Send";
+  }
+};
 
 // ── Announcements from Google Sheets ─────────────────────────
 const SHEET_ID = '1iXzvrfzcY6m-bH3nld_vfufiKLh8Zd1YyGS8wrB2F10';
@@ -25,7 +76,6 @@ async function fetchAnnouncements() {
       if (!row.c) return false;
       const id  = row.c[0] && row.c[0].v;
       const msg = row.c[1] && row.c[1].v;
-      // Skip if either cell is empty, or if this is the header row being returned as data
       if (!id || !msg) return false;
       if (String(id).toLowerCase() === 'id' || String(msg).toLowerCase() === 'message') return false;
       return true;

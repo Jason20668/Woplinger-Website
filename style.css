@@ -11,7 +11,9 @@
 }
 
 body {
-    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .navbar {
@@ -21,6 +23,9 @@ body {
     justify-content: space-between;
     padding: 10px 20px;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .navbar a {
@@ -110,10 +115,11 @@ body {
 }
 
 .announcements-section {
-    padding: 40px 20px;
-    text-align: left;
-    max-width: 860px;
+    padding: 40px 40px;
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
+    flex: 1;
 }
 
 .intro-text {
@@ -168,11 +174,7 @@ body {
     text-align: center;
     padding: 15px;
     font-weight: bold;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    z-index: 10;
 }
 
 .instagram-icon {

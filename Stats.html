@@ -51,16 +51,8 @@
           <div>Team Assists: {{ teamStats.teamAssists ?? 0 }}</div>
           <div>Team Points: {{ teamStats.teamPoints ?? 0 }}</div>
           <div>Team GBs: {{ teamStats.teamGBs ?? 0 }}</div>
-          <div class="full">FOS Win Percent: {{ teamStats.fosWinPercent ?? '100%' }}</div>
         </div>
       </div>
-
-      <footer class="footer">
-        <div class="instagram-icon">
-          <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
-        </div>
-        <p>woplinger@frhsd.com</p>
-      </footer>
     </div>
 
     <!-- PLAYER STATS TAB -->
@@ -77,17 +69,6 @@
 
       <div class="cards-section">
 
-        <!-- Coaches row (active view only) -->
-        <div v-if="!isArchived" class="cards-row coaches-row">
-          <div v-for="coach in coaches" :key="coach.id" class="player-card coach">
-            <div class="card-img">
-              <img :src="coach.image" :alt="coach.name" />
-            </div>
-            <div class="card-name">{{ coach.name }}</div>
-            <div class="card-sub">{{ coach.role }}</div>
-          </div>
-        </div>
-
         <!-- Player cards -->
         <div class="cards-row">
           <div v-for="player in displayedPlayers" :key="player.id" class="player-card" @click="openModal(player)">
@@ -100,14 +81,15 @@
         </div>
 
       </div>
-
-      <footer class="footer">
-        <div class="instagram-icon">
-          <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
-        </div>
-        <p>woplinger@frhsd.com</p>
-      </footer>
     </div>
+
+    <!-- FOOTER (outside all sections) -->
+    <footer class="footer">
+      <div class="instagram-icon">
+        <img src="imgs/Instagram_Logo.jpg" alt="Instagram" />
+      </div>
+      <p>woplinger@frhsd.com</p>
+    </footer>
 
     <!-- PLAYER MODAL -->
     <div class="modal-overlay" :class="{ open: modalOpen }" @click.self="closeModal">

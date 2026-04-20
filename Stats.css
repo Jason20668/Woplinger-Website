@@ -21,7 +21,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-bottom: 70px;
 }
 
 /* ── Navbar ── */
@@ -32,6 +31,9 @@ body {
   justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar a {
@@ -264,11 +266,7 @@ body {
   text-align: center;
   padding: 15px;
   font-weight: bold;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  z-index: 10;
 }
 
 .instagram-icon {

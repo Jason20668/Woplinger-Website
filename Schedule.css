@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 70px;
 }
 
 /* ===== NAVBAR ===== */
@@ -28,6 +27,9 @@ body {
   justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-left,
@@ -135,11 +137,7 @@ body {
   text-align: center;
   padding: 15px;
   font-weight: bold;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  z-index: 10;
 }
 
 .instagram-icon {
